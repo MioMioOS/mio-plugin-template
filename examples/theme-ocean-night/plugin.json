@@ -1,0 +1,18 @@
+{
+  "type": "theme",
+  "id": "ocean-night",
+  "name": "Ocean Night",
+  "version": "1.0.0",
+  "author": {
+    "name": "MioIsland Team"
+  },
+  "price": 0,
+  "palette": {
+    "bg": "#0A1628",
+    "fg": "#E0E8F0",
+    "secondaryFg": "#6B7D94"
+  },
+  "preview": "preview.png",
+  "description": "Deep ocean dark theme",
+  "tags": ["dark", "blue"]
+}

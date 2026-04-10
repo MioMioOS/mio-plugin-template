@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "title": "MioIsland Theme Plugin",
+  "description": "Schema for MioIsland theme plugins",
+  "type": "object",
+  "required": ["type", "id", "name", "version", "author", "price", "description", "tags", "preview", "palette"],
+  "properties": {
+    "type": {
+      "const": "theme"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "Unique kebab-case identifier"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Semantic version (e.g., 1.0.0)"
+    },
+    "author": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "url": { "type": "string", "format": "uri" },
+        "github": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "price": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Price in cents USD. 0 = free"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "preview": {
+      "type": "string",
+      "description": "Path to preview image"
+    },
+    "palette": {
+      "type": "object",
+      "required": ["bg", "fg", "secondaryFg"],
+      "properties": {
+        "bg": {
+          "type": "string",
+          "pattern": "^#[0-9A-Fa-f]{6}$",
+          "description": "Background color (hex). Contrast with fg must be >= 4.5:1"
+        },
+        "fg": {
+          "type": "string",
+          "pattern": "^#[0-9A-Fa-f]{6}$",
+          "description": "Foreground color (hex). Contrast with bg must be >= 4.5:1"
+        },
+        "secondaryFg": {
+          "type": "string",
+          "pattern": "^#[0-9A-Fa-f]{6}$",
+          "description": "Secondary foreground color (hex)"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

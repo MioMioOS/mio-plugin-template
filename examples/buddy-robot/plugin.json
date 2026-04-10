@@ -1,0 +1,58 @@
+{
+  "type": "buddy",
+  "id": "robot",
+  "name": "Robot",
+  "version": "1.0.0",
+  "author": {
+    "name": "MioIsland Team"
+  },
+  "price": 0,
+  "description": "A friendly pixel robot buddy",
+  "tags": ["robot", "pixel"],
+  "preview": "preview.png",
+  "grid": {
+    "width": 13,
+    "height": 11,
+    "cellSize": 4
+  },
+  "palette": ["#2C3E50", "#3498DB"],
+  "animations": {
+    "idle": {
+      "frames": [
+        "AAARERAAAAASERIQAAABERERAAAAARERAAAAERERERAAASERESEAABEREREQAAAREREQAAABEAARAAAAEQABEAAAERAAERAA",
+        "AAARERAAAAASERIQAAABERERAAAAARERAAABEREREREAECERESAQAAEREREAAAAREREQAAABEAARAAAAEQABEAAAERAAERAA"
+      ],
+      "fps": 2
+    },
+    "working": {
+      "frames": [
+        "AAARERAAAAASERIQAAABERERAAAAARERAAAAERERERAAASERESEAABEREREQAAAREREQAAABEAARAAAAEQABEAAAERAAERAA"
+      ],
+      "fps": 2
+    },
+    "needsYou": {
+      "frames": [
+        "AAARERAAAAASERIQAAABERERAAAAARERAAABEREREREAECERESAQAAEREREAAAAREREQAAABEAARAAAAEQABEAAAERAAERAA"
+      ],
+      "fps": 1
+    },
+    "thinking": {
+      "frames": [
+        "AAARERAAAAASERIQAAABERERAAAAARERAAAAERERERAAASERESEAABEREREQAAAREREQAAABEAARAAAAEQABEAAAERAAERAA"
+      ],
+      "fps": 1
+    },
+    "error": {
+      "frames": [
+        "AAARERAAAAASERIQAAABERERAAAAARERAAAAERERERAAASERESEAABEREREQAAAREREQAAABEAARAAAAEQABEAAAERAAERAA"
+      ],
+      "fps": 1
+    },
+    "done": {
+      "frames": [
+        "AAARERAAAAASERIQAAABERERAAAAARERAAABEREREREAECERESAQAAEREREAAAAREREQAAABEAARAAAAEQABEAAAERAAERAA"
+      ],
+      "fps": 1
+    }
+  }
+}

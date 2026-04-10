@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "title": "MioIsland Buddy Plugin",
+  "description": "Schema for MioIsland buddy plugins",
+  "type": "object",
+  "required": ["type", "id", "name", "version", "author", "price", "description", "tags", "preview", "grid", "palette", "animations"],
+  "properties": {
+    "type": {
+      "const": "buddy"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "author": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "url": { "type": "string", "format": "uri" },
+        "github": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "price": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "preview": {
+      "type": "string"
+    },
+    "grid": {
+      "type": "object",
+      "required": ["width", "height", "cellSize"],
+      "properties": {
+        "width": { "const": 13 },
+        "height": { "const": 11 },
+        "cellSize": { "const": 4 }
+      },
+      "additionalProperties": false
+    },
+    "palette": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^#[0-9A-Fa-f]{6}$"
+      },
+      "minItems": 1,
+      "maxItems": 8,
+      "description": "Array of hex colors. Index 0 is transparent (implicit). These map to indices 1-8."
+    },
+    "animations": {
+      "type": "object",
+      "required": ["idle", "working", "needsYou", "thinking", "error", "done"],
+      "properties": {
+        "idle": { "$ref": "#/$defs/animationState" },
+        "working": { "$ref": "#/$defs/animationState" },
+        "needsYou": { "$ref": "#/$defs/animationState" },
+        "thinking": { "$ref": "#/$defs/animationState" },
+        "error": { "$ref": "#/$defs/animationState" },
+        "done": { "$ref": "#/$defs/animationState" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "animationState": {
+      "type": "object",
+      "required": ["frames", "fps"],
+      "properties": {
+        "frames": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "description": "Base64-encoded 4-bit indexed bitmap (72 bytes for 13x11 grid)"
+          },
+          "minItems": 1
+        },
+        "fps": {
+          "type": "number",
+          "minimum": 0.1,
+          "maximum": 30
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
